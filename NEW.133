@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veer Mahadev Plastic | Wholesale Shopping Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .cart-count { position: absolute; top: -8px; right: -8px; background: red; color: white; border-radius: 50%; padding: 2px 6px; font-size: 12px; }
+        .product-card:hover { transform: scale(1.03); transition: 0.3s; }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-xl md:text-2xl font-black text-red-600">VM <span class="text-gray-800">PLASTIC</span></div>
+            
+            <div class="hidden md:flex space-x-6 font-semibold text-gray-700">
+                <a href="#home" class="hover:text-red-600">Home</a>
+                <a href="#products" class="hover:text-red-600">Products</a>
+                <a href="#about" class="hover:text-red-600">About</a>
+                <a href="tel:+918050389261" class="hover:text-red-600"><i class="fa fa-phone"></i> Call</a>
+            </div>
+
+            <div class="relative cursor-pointer" onclick="toggleCart()">
+                <i class="fa fa-shopping-cart text-2xl text-gray-700"></i>
+                <span id="cart-qty" class="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="bg-red-600 text-white py-16 px-4 text-center">
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Direct Wholesale Shopping Center</h1>
+        <p class="text-lg mb-8">Ahmedabad's Largest Supplier of Disposable Plates & Marriage Combos</p>
+        <div class="flex justify-center gap-4">
+            <a href="#products" class="bg-white text-red-600 px-6 py-2 rounded-lg font-bold">Shop Now</a>
+            <a href="https://wa.me/918050389261" class="bg-green-500 text-white px-6 py-2 rounded-lg font-bold"><i class="fab fa-whatsapp"></i> Chat</a>
+        </div>
+    </section>
+
+    <section id="products" class="container mx-auto px-4 py-12">
+        <h2 class="text-3xl font-bold text-center mb-10 text-gray-800 underline decoration-red-500">Our Products</h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="bg-white p-4 rounded-xl shadow product-card">
+                <img src="https://via.placeholder.com/300x300.png?text=13-Inch+Plate" class="w-full h-40 object-cover rounded-lg mb-4" alt="Buffer Plate">
+                <h3 class="font-bold text-gray-800">13" Buffer Plate</h3>
+                <p class="text-sm text-gray-500 mb-2">Heavy Premium Quality</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-red-600 font-bold">₹ Wholesale</span>
+                    <button onclick="addToCart('13 Inch Plate')" class="bg-gray-800 text-white p-2 rounded-full text-xs"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow product-card">
+                <img src="https://via.placeholder.com/300x300.png?text=Marriage+Combo" class="w-full h-40 object-cover rounded-lg mb-4" alt="Marriage Combo">
+                <h3 class="font-bold text-gray-800">Marriage Combo</h3>
+                <p class="text-sm text-gray-500 mb-2">Full Set (Plates+Spoons)</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-red-600 font-bold">₹ Best Offer</span>
+                    <button onclick="addToCart('Marriage Combo')" class="bg-gray-800 text-white p-2 rounded-full text-xs"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow product-card">
+                <img src="https://via.placeholder.com/300x300.png?text=Food+Container" class="w-full h-40 object-cover rounded-lg mb-4" alt="Containers">
+                <h3 class="font-bold text-gray-800">Food Containers</h3>
+                <p class="text-sm text-gray-500 mb-2">Leak-proof All Sizes</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-red-600 font-bold">₹ Bulk Rate</span>
+                    <button onclick="addToCart('Food Containers')" class="bg-gray-800 text-white p-2 rounded-full text-xs"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow product-card">
+                <img src="https://via.placeholder.com/300x300.png?text=Silver+Foil" class="w-full h-40 object-cover rounded-lg mb-4" alt="Silver Foil">
+                <h3 class="font-bold text-gray-800">Premium Silver Foil</h3>
+                <p class="text-sm text-gray-500 mb-2">72 Meters Roll</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-red-600 font-bold">₹ Wholesale</span>
+                    <button onclick="addToCart('Silver Foil')" class="bg-gray-800 text-white p-2 rounded-full text-xs"><i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-[60] flex justify-end">
+        <div class="bg-white w-full md:w-96 h-full p-6 shadow-2xl">
+            <div class="flex justify-between items-center border-b pb-4 mb-4">
+                <h2 class="text-2xl font-bold">Your Cart</h2>
+                <button onclick="toggleCart()" class="text-2xl">&times;</button>
+            </div>
+            <div id="cart-items" class="space-y-4 mb-10 overflow-y-auto h-[60vh]">
+                </div>
+            <button onclick="checkoutWhatsApp()" class="w-full bg-green-600 text-white py-4 rounded-xl font-bold text-lg">
+                <i class="fab fa-whatsapp"></i> Order Now via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <section id="about" class="bg-gray-800 text-white py-16 px-4">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-4">About Veer Mahadev Plastic</h2>
+            <p class="max-w-2xl mx-auto text-gray-400">Ahmedabad, Gujarat mein hum sabse bade wholesale supplier hain disposables ke. Aap humein call karke ya WhatsApp karke bulk rates mangwa sakte hain.</p>
+        </div>
+    </section>
+
+    <footer class="py-6 bg-black text-white text-center text-sm">
+        &copy; 2026 Veer Mahadev Plastic | Ahmedabad | GST Registered
+    </footer>
+
+    <script>
+        let cart = [];
+        let number = "918050389261"; // APNA NUMBER YAHAN DALEN
+
+        function addToCart(name) {
+            cart.push(name);
+            document.getElementById('cart-qty').innerText = cart.length;
+            alert(name + " added to cart!");
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            const itemsDiv = document.getElementById('cart-items');
+            itemsDiv.innerHTML = "";
+            cart.forEach((item, index) => {
+                itemsDiv.innerHTML += `<div class="flex justify-between border-b pb-2"><span>${item}</span><button onclick="removeItem(${index})" class="text-red-500 italic">Remove</button></div>`;
+            });
+            modal.classList.toggle('hidden');
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            document.getElementById('cart-qty').innerText = cart.length;
+            toggleCart(); toggleCart(); // Refresh
+        }
+
+        function checkoutWhatsApp() {
+            if(cart.length === 0) return alert("Cart is empty!");
+            let message = "Hi Veer Mahadev Plastic, I want to order: " + cart.join(", ");
+            window.location.href = `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+        }
+    </script>
+</body>
+</html>
